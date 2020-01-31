@@ -147,6 +147,13 @@ class Instructor extends Lambdasian{
   grade(student, subject) {
     return `${student.name} receives a perfect score on ${subject}`
   }
+  randomGrade(student) {
+    let modify = Math.floor(Math.random()*100) +1 //number we are modifying by.. Math.random is a decimal.. so we need to multiply
+    if (Math.floor(Math.random() * 100) % 2 === 0) { //if number is even, we modify negatively - which means we will subtract. 
+      modify *= -1;
+    }
+    student.grade += modify;
+  }
 }
 
 /*
@@ -170,13 +177,16 @@ class Student extends Lambdasian{
     this.previousBackground = obj.previousBackground;
     this.className = obj.className;
     this.favSubjects = obj.favSubjects;
-  }
+    this.grade = (Math.floor(Math.random() * 100) +1)
+  } //returns a roandom integer from 0 to 10;
+
   listSubjects() {
     let favSubs = "Loving ";
     for (let i=0; i < this.favSubjects.length; i++) {
       favSubs += this.favSubjects[i] + ', '
     }
-    return favSubs;
+    favSubs = favSubs.substring(0, favSubs.length - 2)
+    return favSubs + '!';
   }
   PRAssignment(subject) {
     return `${this.name} has submitted a PR for ${subject}.`
