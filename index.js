@@ -194,6 +194,19 @@ class Student extends Lambdasian{
   sprintChallenge(subject) {
     return `${this.name} has begun sprint challenge on ${subject}`
   }
+  graduate(instructor) {
+    // This method, when called, will check the grade of the student and see if they're ready to graduate from Lambda School
+    // If the student's grade is above a 70% let them graduate! Otherwise go back to grading their assignments to increase their score.
+    if (this.grade >= 70) {
+      return "Graduation Congratulations!"
+    } else {
+      while (this.grade < 10) {
+        instructor.randomGrade(this);
+      }
+      return "You finally did it!"
+    }
+
+  }
 }
 
 /*
